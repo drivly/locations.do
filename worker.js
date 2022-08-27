@@ -32,8 +32,9 @@ export class Location {
     }
     return new Response(JSON.stringify({ 
       api,
-      locations: this.objects,
-      data
+      objects: this.objects,
+      locations: this.locations,
+      data,
     }, null, 2), { headers: { 'content-type': 'application/json; charset=utf-8' } })
   }
 }
@@ -53,7 +54,7 @@ export class Locations {
       let location = this.locations.find(loc => loc.iata == colo)
       location.url = 'https://locations.do/' + colo
       this.objects[colo] = location
-      this.state.storage.put(colo, location)
+      await this.state.storage.put(colo, location)
     } 
     console.log(this.objects)
     return new Response(JSON.stringify(this.objects, null, 2), { headers: { 'content-type': 'application/json; charset=utf-8' } })
