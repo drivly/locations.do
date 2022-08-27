@@ -13,12 +13,12 @@ export class Location {
       ])
       this.cf = cf
       this.locations = locations
-      this.objects = await env.LOCATIONS.get(env.LOCATIONS.idFromName('index')).fetch('https://locations.do/' + this.cf.colo)
+      this.objects = await env.LOCATIONS.get(env.LOCATIONS.idFromName('index')).fetch('https://locations.do/' + this.cf.colo).then(res => res.json())
     })
   }
   async fetch(req) {
     const { origin, hostname, pathname, search, searchParams } = new URL(req.url)
-    const data = await this.env.LOCATIONS.get(this.env.LOCATIONS.idFromName('index')).fetch('https://locations.do/' + this.cf.colo)
+    const data = await this.env.LOCATIONS.get(this.env.LOCATIONS.idFromName('index')).fetch('https://locations.do/' + this.cf.colo).then(res => res.json())
     console.log(this.cf)
     const api = {
       icon: '🌎',
