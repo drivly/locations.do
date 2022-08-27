@@ -34,8 +34,8 @@ export class Location {
     return new Response(JSON.stringify({ 
       api,
       objects: this.objects,
-      locations: this.locations,
       data,
+      locations: this.locations,
     }, null, 2), { headers: { 'content-type': 'application/json; charset=utf-8' } })
   }
 }
