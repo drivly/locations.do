@@ -51,6 +51,7 @@ export class Locations {
   async fetch(req) {
     const { origin, hostname, pathname } = new URL(req.url)
     const [_,colo] = pathname.split('/')
+    const log = await fetch('https://locations.logging.do/log-test/' + pathname)
     console.log({pathname, colo})
     if (!this.objects[colo]) {
       let location = this.locations.find(loc => loc.iata == colo)
