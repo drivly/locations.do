@@ -13,7 +13,7 @@ export class Location {
       ])
       this.cf = cf
       this.locations = locations
-      this.objects = await env.LOCATIONS.get(env.LOCATIONS.idFromName('index')).fetch('https://locations.do/' + cf.colo)
+      this.objects = await env.LOCATIONS.get(env.LOCATIONS.idFromName('test')).fetch('https://locations.do/ORD')
     })
   }
   async fetch(req) {
