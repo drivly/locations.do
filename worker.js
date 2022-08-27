@@ -5,6 +5,7 @@
 export class Location {
   constructor(state, env) {
     this.state = state
+    this.env = env
     this.state.blockConcurrencyWhile(async () => {
       const [cf, locations] = await Promise.all([
        fetch('https://workers.cloudflare.com/cf.json').then(res => res.json()),
@@ -17,6 +18,7 @@ export class Location {
   }
   async fetch(req) {
     const { origin, hostname, pathname, search, searchParams } = new URL(req.url)
+    const data = await this.env.LOCATIONS.get(this.env.LOCATIONS.idFromName('index')).fetch('https://locations.do/' + cf.colo)
     const api = {
       icon: '🌎',
       name: 'Locations.do',
@@ -31,6 +33,7 @@ export class Location {
     return new Response(JSON.stringify({ 
       api,
       locations: this.objects,
+      data
     }, null, 2), { headers: { 'content-type': 'application/json; charset=utf-8' } })
   }
 }
