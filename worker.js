@@ -51,6 +51,7 @@ export class Locations {
   async fetch(req) {
     const { origin, hostname, pathname } = new URL(req.url)
     const [_,colo] = pathname.split('/')
+    console.log({pathname, colo})
     if (!this.objects[colo]) {
       let location = this.locations.find(loc => loc.iata == colo)
       location.url = 'https://locations.do/' + colo
@@ -58,6 +59,6 @@ export class Locations {
       await this.state.storage.put(colo, location)
     } 
     console.log(this.objects)
-    return new Response(JSON.stringify(this.objects, null, 2), { headers: { 'content-type': 'application/json; charset=utf-8' } })
+    return new Response(JSON.stringify(this.locations, null, 2), { headers: { 'content-type': 'application/json; charset=utf-8' } })
   }
 }
