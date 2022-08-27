@@ -19,6 +19,7 @@ export class Location {
   async fetch(req) {
     const { origin, hostname, pathname, search, searchParams } = new URL(req.url)
     const data = await this.env.LOCATIONS.get(this.env.LOCATIONS.idFromName('index')).fetch('https://locations.do/' + this.cf.colo)
+    console.log(this.cf)
     const api = {
       icon: '🌎',
       name: 'Locations.do',
