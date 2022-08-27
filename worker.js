@@ -7,8 +7,8 @@ export class Location {
     this.state = state
     this.state.blockConcurrencyWhile(async () => {
       const [cf, locations] = await Promise.all([
-       fetch('https://workers.cloudflare.com/cf.json').then(res => res.json())
-       fetch('https://speed.cloudflare.com/locations').then(res => res.json())
+       fetch('https://workers.cloudflare.com/cf.json').then(res => res.json()),
+       fetch('https://speed.cloudflare.com/locations').then(res => res.json()),
       ])
       this.cf = cf
       this.locations = locations
