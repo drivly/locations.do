@@ -1,0 +1,13 @@
+name = "locations-do"
+account_id = "b6641681fe423910342b9ffa1364c76d"
+route = { pattern = "*/*", zone_id = "a0ac068a684dc04784c3e2de3f8c54ec" }
+main = "worker.js"
+usage_model = "unbound"
+compatibility_date = "2022-08-27"
+
+[durable_objects]
+bindings = [{name = "LOCATION", class_name = "Location"},{name = "LOCATIONS", class_name = "Locations"}]
+
+[[migrations]]
+tag = "v1" # Should be unique for each entry
+new_classes = ["Location","Locations"]
