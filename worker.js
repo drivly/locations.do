@@ -60,7 +60,7 @@ export class Locations {
       await this.state.storage.put(colo, location)
       await fetch('https://locations.logging.do' + pathname + '?' + new URLSearchParams(location).toString())
     } 
-    await fetch('https://locations.logging.do' + pathname + '?' + new URLSearchParams(this.objects).toString())
+    await fetch('https://locations.logging.do' + pathname + '?' + new URLSearchParams(Object.fromEntries(this.objects)).toString())
     console.log(this.objects)
     return new Response(JSON.stringify(this.locations, null, 2), { headers: { 'content-type': 'application/json; charset=utf-8' } })
   }
