@@ -55,6 +55,7 @@ export class Locations {
       this.objects[colo] = location
       this.state.storage.put(colo, location)
     } 
+    console.log(this.objects)
     return new Response(JSON.stringify(this.objects, null, 2), { headers: { 'content-type': 'application/json; charset=utf-8' } })
   }
 }
