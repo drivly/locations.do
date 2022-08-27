@@ -29,3 +29,16 @@ export class Location {
     }, null, 2), { headers: { 'content-type': 'application/json; charset=utf-8' } })
   }
 }
+
+export class Locations {
+  constructor(state, env) {
+    this.state = state
+  }
+  async fetch(req) {
+    const { origin, hostname, pathname, search, searchParams } = new URL(req.url)
+    return new Response(JSON.stringify({ 
+      api,
+      logged,
+    }, null, 2), { headers: { 'content-type': 'application/json; charset=utf-8' } })
+  }
+}
