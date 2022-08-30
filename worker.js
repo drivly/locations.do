@@ -55,6 +55,6 @@ export class Locations {
     } 
 //     await fetch('https://locations.logging.do' + pathname + '?' + new URLSearchParams(this.objects).toString())
     await fetch('https://locations.logging.do' + pathname + '?locations=' + JSON.stringify(this.objects))
-    return new Response(JSON.stringify({ current: this.objects[colo], list: this.objects }, null, 2), { headers: { 'content-type': 'application/json; charset=utf-8' } })
+    return new Response(JSON.stringify({ worker: this.objects[req.cf.colo], durable: this.objects[colo], all: this.objects }, null, 2), { headers: { 'content-type': 'application/json; charset=utf-8' } })
   }
 }
